@@ -3,6 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch } from 'react-redux';
+import { DECREASE_AMOUNT, DELETE_PRODUCT_ORDERED, INCREASE_AMOUNT } from '../redux/types';
 
 
 function OrderedProductCart({item}) {
