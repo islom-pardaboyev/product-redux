@@ -26,10 +26,10 @@ export const orderedList = (state = initialState, action) => {
       );
     case DECREASE_AMOUNT:
       return state.map((item) =>
-        item.id == action.payload.id
-          ? { ...item, amount: item.amount >= 1 ? 1 : item.amount - 1 }
-          : item
-      );
+  item.id === action.payload.id
+    ? { ...item, amount: Math.max(item.amount - 1, 1) }
+    : item
+);
     case DELETE_PRODUCT_ORDERED:
       return state.filter((item) => item.id !== action.payload);
 
