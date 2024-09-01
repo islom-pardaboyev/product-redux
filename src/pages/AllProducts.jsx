@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCart from "../components/ProductCart";
 import { useAxios } from "../hooks/useAxios";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_ALL_PRODUCTS } from "../redux/types";
 import { BounceLoader } from "react-spinners";
-
+import { MainContext } from "../context/context";
 function AllProducts() {
   const [loading, setLoading] = useState(true);
   const getProducts = useSelector((state) => state.getProducts);
+  const { refresh, setRefresh } = useContext(MainContext);
+  console.log(refresh);
   
 
   const dispatch = useDispatch();
@@ -16,19 +18,18 @@ function AllProducts() {
     useAxios()
       .get("products")
       .then((res) => {
-        res.data.products.map(item => {
-          item.isSaved = null
-          item.isLiked = null
-          item.isOrdered = null
-        })
+        res.data.products.map((item) => {
+          item.isSaved = null;
+          item.isLiked = null;
+          item.isOrdered = null;
+        });
         dispatch({ type: GET_ALL_PRODUCTS, payload: res.data.products });
-        
-        setLoading(false)
+
+        setLoading(false);
       });
-    }, []);
+  }, [refresh]);
 
   return (
-    
     <>
       <section className="mt-10">
         <div className="container">

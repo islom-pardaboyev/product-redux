@@ -7,3 +7,4 @@ export const DELETE_PRODUCT_LIKED = "delete_product_liked"
 export const DELETE_PRODUCT_ORDERED = 'delete_product_ordered'
 export const INCREASE_AMOUNT = 'icrease_amount'
 export const DECREASE_AMOUNT = 'decrease_amount'
+export const SEARCH = 'search'
